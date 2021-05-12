@@ -89,6 +89,7 @@
 					<th scope="col">Contact Number</th>
 					<th scope="col">Address</th>
 					<th scope="col">Delete</th>
+					<th scope="col">Update</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -107,6 +108,8 @@
 						<td><c:out value="${patient.address}" /></td>
 						<td><a href="patientdelete?id=${patient.id}"
 							class="btn btn-danger" type="button">Delete</a></td>
+						<td><a href="patientupdate?id=${patient.id}"
+							class="btn btn-primary" type="button">Update</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

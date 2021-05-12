@@ -52,10 +52,10 @@ public class PatientController {
 		
 		Patient patient = this.patientService.find(patientId);
 		
-		System.out.println("------------------------------------------------------" + patient);
 		
 		if(patient != null) {
 			mv.addObject("patient", patient);
+			mv.addObject("id", patient.getId());
 		}
 		return mv;
 	}
@@ -65,18 +65,19 @@ public class PatientController {
 		
 		int patientId = Integer.parseInt(request.getParameter("patient_id"));
 		String patientName = request.getParameter("patient_name");
+		String gender = request.getParameter("gender");
 		int age = Integer.parseInt(request.getParameter("age"));
 		int weight = Integer.parseInt(request.getParameter("weight"));
 		int contactNumber = Integer.parseInt(request.getParameter("contact_number"));
 		String address = request.getParameter("address");
 				
-		this.patientService.insert(patientId, patientName, patientName, age, weight, contactNumber, address);
+		this.patientService.insert(patientId, patientName, gender, age, weight, contactNumber, address);
 		
 		return "PatientInsert";
 	}
 	
 	
-	@RequestMapping(value = "/patientdelete", method = RequestMethod.GET)
+	@RequestMapping(path = "/patientdelete", method = RequestMethod.GET)
 	public ModelAndView deletePatient(@RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView("PatientList");
 		
@@ -85,5 +86,29 @@ public class PatientController {
 		mv.addObject("allPatient", patientService.findAll());
 		return mv;
 	}
+	
+	@RequestMapping(path = "/patientupdate", method = RequestMethod.GET)
+	public ModelAndView updatePatient(@RequestParam("id") int id) {
+		ModelAndView mv = new ModelAndView("PatientUpdate");
+		mv.addObject("patient", this.patientService.find(id));
+		return mv;
+	}
+	
+	@RequestMapping(path = "/patientupdate", method = RequestMethod.POST)
+	public String updatePatientUtil(HttpServletRequest request, HttpServletResponse response) {
+		
+		int patientId = Integer.parseInt(request.getParameter("patient_id"));
+		String patientName = request.getParameter("patient_name");
+		String gender = request.getParameter("gender");
+		int age = Integer.parseInt(request.getParameter("age"));
+		int weight = Integer.parseInt(request.getParameter("weight"));
+		int contactNumber = Integer.parseInt(request.getParameter("contact_number"));
+		String address = request.getParameter("address");
+		
+		this.patientService.update(patientId, patientName, gender, age, weight, contactNumber, address);
+		
+		return "PatientMenu";
+	}
+	
 	
 }

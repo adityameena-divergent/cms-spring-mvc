@@ -23,17 +23,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		return bean;
 	}
 	
-//	@Override
-//	public void configureViewResolvers(ViewResolverRegistry registry) {
-//		// TODO Auto-generated method stub
-//		WebMvcConfigurer.super.configureViewResolvers(registry);
-//	}
-
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-////		// TODO Auto-generated method stub
-////		WebMvcConfigurer.super.addResourceHandlers(registry);
-//		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-//	}
 	
 	@Override
 	 public void addResourceHandlers(ResourceHandlerRegistry registry) {

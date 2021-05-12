@@ -15,4 +15,6 @@ public interface PatientService {
 	
 	public void remove(int patientId);
 	
+	public void update(int patientId, String patientName, String gender, int age, int weight, int contactNumber, String address);
+	
 }

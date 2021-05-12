@@ -12,6 +12,6 @@ public interface BaseDAO<T> {
 
 	public void remove(int id);
 	
-	public void update(int id, T data);
+	public void update(T data);
 
 }

@@ -51,21 +51,23 @@ public class PatientDaoImpl implements BaseDAO<Patient> {
 		entityManager.close();
 	}
 
-	public void update(int id, Patient data) {
+	public void update(Patient data) {
 
 		EntityManager entityManager = EntityManagerUtility.getEntityManager();
 		entityManager.getTransaction().begin();
 		
-		Patient patient = entityManager.find(Patient.class, id);
+		Patient patient = entityManager.find(Patient.class, data.getId());
 		
 		if (patient != null) {
-			
+			patient.setName(data.getName());
+			patient.setGender(data.getGender());
+			patient.setAge(data.getAge());
+			patient.setWeight(data.getWeight());
+			patient.setContactNumber(data.getContactNumber());
+			patient.setAddress(data.getAddress());
 		}
-		
 		entityManager.getTransaction().commit();
 		entityManager.close();
-
-		
 	}
 
 }

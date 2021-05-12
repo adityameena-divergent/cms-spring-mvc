@@ -37,12 +37,29 @@ public class PatientServiceImpl implements PatientService {
 		return patientDao.findAll();
 	}
 
+	@Transactional
 	public Patient find(int patientId) {
 		return patientDao.find(patientId);
 	}
 
+	@Transactional
 	public void remove(int patientId) {
 		patientDao.remove(patientId);
+	}
+
+	@Transactional
+	public void update(int patientId, String patientName, String gender, int age, int weight, int contactNumber,
+			String address) {
+		Patient patient = new Patient();
+		patient.setId(patientId);
+		patient.setName(patientName);
+		patient.setGender(gender);
+		patient.setAge(age);
+		patient.setWeight(weight);
+		patient.setContactNumber(contactNumber);
+		patient.setAddress(address);
+		
+		patientDao.update(patient);
 	}
 
 	

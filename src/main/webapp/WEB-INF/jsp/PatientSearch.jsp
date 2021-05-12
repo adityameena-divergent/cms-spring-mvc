@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false"%>
 <%@ page import="com.divergentsl.cms.entity.Patient"%>
 
 
@@ -82,27 +84,37 @@
 
 		</form>
 		
-		<% 
-			if(request.getAttribute("patient") != null) {
+		<c:set var="patient" value="${patient}" />
+		
+		<c:if test="${not empty patient['class'].declaredFields}">
 				
-				Patient patient = (Patient)request.getAttribute("patient");
-		%>
 
 		<div>
 			
 			<ul class="list-group list-group-horizontal">
 				<li class="list-group-item">Patient Id</li>
-				<li class="list-group-item"><%= patient.getId() %></li>
+				<li class="list-group-item">${patient.id}</li>
 			</ul>
 			
 			<ul class="list-group list-group-horizontal">
 				<li class="list-group-item">Patient Name</li>
-				<li class="list-group-item"><%= patient.getName() %></li>
+				<li class="list-group-item">${patient.name}</li>
 			</ul>
 			
+			<ul class="list-group list-group-horizontal">
+				<li class="list-group-item">Patient Age</li>
+				<li class="list-group-item">${patient.age}</li>
+			</ul>
+			
+			<ul class="list-group list-group-horizontal">
+				<li class="list-group-item">Patient Weight</li>
+				<li class="list-group-item">${patient.weight}</li>
+			</ul>
+			
+			
 		</div>
-		
-		<% } %>
+		</c:if>
+
 
 	</div>
 

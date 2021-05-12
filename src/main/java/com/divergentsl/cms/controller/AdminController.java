@@ -46,20 +46,11 @@ public class AdminController extends HttpServlet {
     	return "AdminLogin";
     }
     
-//    @RequestMapping(path = "/adminlogin", method = RequestMethod.GET)
-//    public String adminLogin() {
-//    	return "AdminLogin";
-//    }
     
     @GetMapping("/adminmenu")
     public String adminMenu() {
     	return "AdminMenu";
     }
     
-//    @RequestMapping(path = "/adminmenu", method = RequestMethod.GET)
-//    public String adminMenu() {
-//    	return "AdminMenu";
-//    }
-
 
 }
